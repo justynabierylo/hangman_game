@@ -1,0 +1,338 @@
+.App {
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'AllerDisplay';
+  src: url('./fonts/AllerDisplay.ttf') ;
+}
+
+body{
+  margin: 0;
+  font-family: AllerDisplay, sans-serif;
+}
+
+.container{
+  max-width: 1055px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /*background-color: yellow;*/
+}
+
+.container:after{
+  content: '';
+  width: 0;
+  height: 0;
+  border-bottom: 400px solid dodgerblue;
+  border-left: 400px solid transparent;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.hangman-container{
+  display: flex;
+  height: 80vh;
+}
+
+.hangman{
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+
+.bad-letters{
+  font-size: 64px;
+  color: dodgerblue;
+  justify-content: flex-end;
+}
+
+.bad-letters p{
+  color: black;
+}
+
+.bar{
+  background-image: url("../src/imgs/bar.png");
+  background-repeat: no-repeat;
+  display: inline;
+  width: 448px;
+  height: 77px;
+  position: absolute;
+  left:-200px;
+  top:75px;
+}
+
+
+.head{
+  background-image: url("../src/imgs/head.png");
+  background-repeat: no-repeat;
+  display: inline;
+  width: 192px;
+  height: 212px;
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  top: 140px;
+  left:105px;
+}
+
+
+.neck{
+  background-image: url("../src/imgs/neck.png");
+  background-repeat: no-repeat;
+  display: inline;
+  position: absolute;
+  width: 46px;
+  height: 67px;
+  visibility: hidden;
+  top: 315px;
+  left:180px;
+}
+.corpus{
+  background-image: url("../src/imgs/corpus.png");
+  background-repeat: no-repeat;
+  display: inline;
+  position: absolute;
+  width: 105px;
+  height: 165px;
+  visibility: hidden;
+  top: 365px;
+  left: 150px;
+}
+.right-arm{
+  background-image: url("../src/imgs/right-arm.png");
+  background-repeat: no-repeat;
+  display: inline;
+  position: absolute;
+  width: 126px;
+  height: 122px;
+  visibility: hidden;
+  top: 365px;
+  left: 215px;
+  z-index: 1;
+
+
+}
+.left-arm{
+  background-image: url("../src/imgs/left-arm.png");
+  background-repeat: no-repeat;
+  display: inline;
+  position: absolute;
+  width: 126px;
+  height: 122px;
+  visibility: hidden;
+  top: 365px;
+  left: 65px;
+  z-index: 1;
+}
+.right-hand{
+  background-image: url("../src/imgs/right-hand.png");
+  background-repeat: no-repeat;
+  display: inline;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  visibility: hidden;
+  top: 460px;
+  left: 315px;
+}
+.left-hand{
+  background-image: url("../src/imgs/left-hand.png");
+  background-repeat: no-repeat;
+  display: inline;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  visibility: hidden;
+  top: 460px;
+  left: 60px;
+}
+.right-leg{
+  background-image: url("../src/imgs/right-leg.png");
+  background-repeat: no-repeat;
+  display: inline;
+  position: absolute;
+  width: 82px;
+  height: 178px;
+  visibility: hidden;
+  top: 500px;
+  left: 205px;
+  z-index: 2;
+
+}
+.left-leg{
+  background-image: url("../src/imgs/left-leg.png");
+  background-repeat: no-repeat;
+  display: inline;
+  position: absolute;
+  width: 82px;
+  height: 178px;
+  visibility: hidden;
+  top: 500px;
+  left: 118px;
+  z-index: 2;
+
+}
+.right-foot{
+  background-image: url("../src/imgs/right-foot.png");
+  background-repeat: no-repeat;
+  display: inline;
+  position: absolute;
+  width: 84px;
+  height: 36px;
+  visibility: hidden;
+  top: 655px;
+  left: 240px;
+  z-index: 1;
+
+}
+.left-foot{
+  background-image: url("../src/imgs/left-foot.png");
+  background-repeat: no-repeat;
+  display: inline;
+  position: absolute;
+  width: 84px;
+  height: 36px;
+  visibility: hidden;
+  top: 655px;
+  left: 80px;
+  z-index: 1;
+}
+
+.square-container{
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10;
+  position: relative;
+  width: 100%;
+}
+
+.squares{
+  display: flex;
+
+}
+
+.squares>div{
+  width: 65px;
+  height: 80px;
+  margin: 5px;
+  background-color: lightgrey;
+  border-radius: 5px;
+}
+
+.good-letters{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 64px;
+  position: absolute;
+}
+
+.good-letters>div{
+  width: 65px;
+  height: 80px;
+  margin: 5px;
+  background-color: #9c9c9c;
+  border-radius: 5px;
+}
+
+.missed{
+  position: absolute;
+}
+
+.game-over{
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(17, 15, 255, 0.8);
+  z-index: 100;
+  top:0;
+  left:0;
+  /*display: flex;*/
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-over-text{
+  font-size: 120px;
+  /*display: block;*/
+  /*width: 100%;*/
+  /*height: 100%;*/
+  color: white;
+  margin: 10px;
+}
+
+.game-over p{
+  color: white;
+  font-size: 24px;
+}
+
+.game-over button{
+  background-color: blue;
+  color: white;
+  font-size: 24px;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 20px;
+  font-family: AllerDisplay, sans-serif;
+}
+
+.game-over button:hover{
+  background-color: #0000a8;
+  color: white;
+  cursor: pointer;
+}
+
+.game-won{
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(17, 15, 255, 0.8);
+  z-index: 100;
+  top:0;
+  left:0;
+  /*display: flex;*/
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-won-text{
+  font-size: 120px;
+  color: white;
+  margin: 10px;
+}
+
+.game-won button{
+  background-color: blue;
+  color: white;
+  font-size: 24px;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 20px;
+  font-family: AllerDisplay, sans-serif;
+}
+
+.game-won button:hover{
+  background-color: #0000a8;
+  color: white;
+  cursor: pointer;
+}
+
+.game-won p{
+  color: white;
+  font-size: 24px;
+}
+
+
